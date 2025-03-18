@@ -1,10 +1,12 @@
 import json
+import time
 from openpyxl import load_workbook
 from os import path
 
 def main():
   wb = load_workbook(path.join(path.dirname(__file__), 'data.xlsx'))
   sheet = wb['Sheet1']
+  # 遍历excel中每一行
   for index, row in enumerate(sheet.values):
     # 跳过表头
     if index == 0:
@@ -24,6 +26,8 @@ def main():
              }  # 指定所属的VPC ID
     }
     print(jsonObj)
+    # 睡眠3秒
+    time.sleep(3)
 
   # 读取特定单元格的值
   # cell_value = sheet["A1"].value
