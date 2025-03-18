@@ -12,6 +12,17 @@ def main():
     print(row)
     jsonObj = json.loads(row[2])
     jsonObj['c']['aa'] = 'new'
+    params = {
+        "InstanceType": row[0],
+        "ImageId": row[1],  # 选择合适的操作系统镜像ID
+        "Placement": {"Zone": row[2]},  # 指定所在的物理机位置
+        "SystemDisk": {"DiskSize": 75},
+        "DataDisks": [{"DiskSize": 100,"DiskType": "CLOUD_SSD"}],
+        "VirtualPrivateCloud":
+            {"VpcId": "vpc-o6zsvhvr",
+            "SubnetId": "subnet-n4g05gye"
+             }  # 指定所属的VPC ID
+    }
     print(jsonObj)
 
   # 读取特定单元格的值
